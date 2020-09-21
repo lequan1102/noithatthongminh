@@ -1,0 +1,1417 @@
+@mixin transi($s)
+  transition: all ease $s
+  -webkit-transition: all ease $s
+  -moz-transition: all ease $s
+  -ms-transition: all ease $s
+  -o-transition: all ease $s
+@mixin clamp($n)
+  display: -webkit-box
+  -webkit-line-clamp: $n
+  overflow: hidden
+  -webkit-box-orient: vertical
+/* ===================
+ * List of colors
+ * 1. 1rd color primary (xanh lá)
+ * 2. 2rd color (nâu nhạt)
+ * 3. 3rd color (vàng xẫm)
+ * =================== */
+$vang: #B59657
+$xanh: #080021
+$cam: #e7654b
+$xam: #F5F5F5
+/* ===================
+ * SLICK SLIDER
+ * 1. Slick Banner
+ * 2. Slick Categ Product
+ * =================== */
+.slick-banner
+  .container-fluid
+    padding: 0px
+    outline: none
+  h2
+    font-size: 81px
+    font-weight: bold
+  .excerpt
+    width: 80%
+    display: block
+  .buy_now
+    max-width: 200px
+    display: flex
+    align-items: center
+    justify-content: center
+    border: 2px solid #080021
+    border-radius: 40px
+    color: $xanh
+    font-weight: bold
+    margin-top: 20px
+    padding: 10px
+    +transi(.3s)
+    i
+      margin-left: 10px
+    &:hover
+      background-color: $xanh
+      color: #fff
+      border: 2px solid $xanh
+  .item
+    width: 50%
+    float: left
+  .bg-gradient
+    img
+      transform: translateX(-11%)
+/* ===================
+ * @resources Master
+ * =================== */
+[pc]
+  .head
+    padding: 15px 0
+    display: flex
+    .wrapper-pc
+      display: flex
+      align-items: center
+      justify-content: flex-end
+    .pc-search
+      // background-color: $vang
+      form
+        width: 600px
+        display: flex
+        align-items: center
+        justify-content: space-between
+        border-radius: 70px
+        overflow: hidden
+        background-color: #f0f0f0
+        border: 1px solid #f0f0f0
+        transition: all ease 0.3s
+        &:hover
+          border: 1px solid #212121
+        input[type="text"]
+          width: 100%
+          height: 45px
+          background-color: #f0f0f0
+          border: none
+          // border-left: 1px solid $xanh
+          padding-left: 15px
+          color: $xanh
+          outline: none
+          border-radius: 0px
+          font-size: 14px
+          border-radius: 0px
+          min-width: 264px
+          &::placeholder
+            color: #6d6d6d
+        select
+          border: none
+          background-color: transparent
+          color: $xanh
+          outline: none
+          padding: 0 10px
+        button[type="submit"]
+          border: none
+          outline: none
+          height: 45px
+          width: 75px
+          cursor: pointer
+          i
+            color: #464646
+    .pc-contact
+      margin: 0 30px
+      color: $vang
+      text-align: center
+      div
+        font-weight: 600
+      span
+        position: relative
+        &::after
+          content: ''
+          position: absolute
+          width: 70px
+          height: 1px
+          background-color: $vang
+          bottom: 0px
+          left: 50%
+          transform: translateX(-50%)
+    .pc-user
+      display: flex
+      align-items: center
+      justify-content: center
+      a
+        display: flex
+        align-items: center
+        text-align: center
+        margin-bottom: 0px
+        margin-left: 40px
+        .w-img
+          height: 31px
+          position: relative
+          margin-right: 10px
+          .quantity
+            position: absolute
+            width: 20px
+            height: 20px
+            border-radius: 50%
+            background-color: #212121
+            top: -4px
+            right: -8px
+            color: #fff
+            font-size: 12px
+          img
+            width: 24px
+            vertical-align: -webkit-baseline-middle
+        span
+          color: #292929
+    .pc-logo
+      max-width: 200px
+      display: flex
+      align-items: center
+      margin-right: 40px
+      margin-left: 18px
+      img
+        // width: 54px
+        max-width: inherit
+  .menu
+    background-color: #e7654b
+    width: 100%
+    &.fixed
+      position: fixed
+      z-index: 100
+      top: 0
+      left: 0
+    nav
+      ul
+        li
+          display: inline-block
+          &.active
+            a
+              background-color: #373737
+          a
+            display: block
+            text-transform: uppercase
+            color: #fff
+            font-size: 15px
+            padding: 10px 20px
+            +transi(.3s)
+            &:hover
+              background-color: #373737
+[cartMB]
+  display: none
+footer
+  position: relative
+  .container-fluid
+    padding: 40px 0
+    background-color: rgba(71, 71, 71, 0.96)
+  b
+    color: #fff
+    display: block
+    padding-bottom: 15px
+    text-transform: uppercase
+  > img
+    position: absolute
+    width: 100%
+    height: 100%
+  ul
+    li
+      a
+        color: #AFAFAF
+        font-size: 15px
+        i
+          width: 25px
+          color: #fff
+        &:hover
+          color: $vang
+//CATEGORY PRODUCTS
+.policies
+  background-color: #f9f9f9
+  padding: 20px 0
+  .col
+    border-right: 1px solid #e4e4e4
+    &:first-child
+      border-left: 1px solid #e4e4e4
+  .item-policies
+    position: relative
+    text-align: center
+    cursor: pointer
+    .item-policies-thumbnail
+      .thumbnail-image
+        background-image: url('../img/sprite.png')
+        width: 55px
+        height: 55px
+        background-color: transparent
+        border-radius: 0
+        transition: all ease .3s
+        margin: 0 auto
+    .item-policies-content-box
+      .content-box-title
+        font-size: 16px
+        font-weight: 500
+        text-transform: capitalize
+      .content-box-dec
+        font-size: 14px
+        line-height: 20px
+        color: #666
+        letter-spacing: .3px
+        font-weight: 400
+        text-transform: capitalize
+    &:hover .content-box-title
+      color: $cam
+    &.shipping
+      &:hover
+        .thumbnail-image
+          background-position: -0px -55px
+      .thumbnail-image
+        background-position: 0 0
+    &.cash
+      &:hover
+        .thumbnail-image
+          background-position: -55px -55px
+      .thumbnail-image
+        background-position: -55px 0
+    &.online-support
+      &:hover
+        .thumbnail-image
+          background-position: -110px -55px
+      .thumbnail-image
+        background-position: -110px 0
+    &.discount
+      &:hover
+        .thumbnail-image
+          background-position: -165px -55px
+      .thumbnail-image
+        background-position: -165px 0
+.products-category
+  overflow: hidden
+  .item
+    margin: 0 10px
+  .products-category--item
+    background-color: #f1f1f1
+    height: 100px
+    overflow: hidden
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    margin-bottom: 15px
+    outline: none
+    +transi(.4s)
+    &:hover
+      background-color: #dadada
+    img
+      width: 50px !important
+      margin: 0 auto
+    span
+      display: block
+      margin-top: 5px
+      color: #585858
+  .owl-nav
+    position: relative
+    > div
+      width: 40px
+      position: absolute
+      border: 2px solid #B5B5B5
+      display: flex
+      align-items: center
+      justify-content: center
+      transform: translateX(-50%)
+      padding: 8px 0
+      span
+        font-size: 20px
+    .owl-prev
+      left: 48%
+    .owl-next
+      left: 52%
+/* ===================
+ * Page News
+ * =================== */
+.news
+  .slick-news
+    padding: 0 10px
+  .arrows-news
+    margin-top: 50px
+    margin-bottom: 30px
+    position: relative
+    height: 40px
+    .arrow
+      background-color: #000000
+      width: 40px
+      height: 40px
+      color: #fff
+      display: flex
+      align-items: center
+      justify-content: center
+      position: absolute
+      cursor: pointer
+      &[aria-disabled="true"]
+        background-color: #797979
+      &.arrow-previous
+        left: calc(50% - 45px)
+      &.arrow-next
+        right: calc(50% - 45px)
+  .item
+    outline: none
+    display: block
+    &:hover
+      .mirror::before
+        -webkit-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 140%, 0)
+        -moz-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 140%, 0)
+        -ms-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 140%, 0)
+        -o-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 140%, 0)
+      .des
+        span
+          color: #e7654b
+    .box-thumbnail
+      padding-top: 37%
+      float: left
+      width: 47%
+      margin-right: 30px
+    .des
+      width: calc(50% - 30px)
+      float: left
+      margin-right: 3%
+      .date
+        color: #4B4B4B
+        position: relative
+        padding-bottom: 10px
+        margin-bottom: 10px
+        font-size: 14px
+        font-weight: 500
+        &::after
+          content: ''
+          position: absolute
+          width: 40px
+          height: 1px
+          background-color: #CFCFCF
+          bottom: 0
+          left: 0
+      span
+        color: #e7654b
+        font-weight: 500
+        font-size: 14px
+        line-height: 20px
+        display: block
+        margin-bottom: 7px
+        +transi(.3s)
+      .excerpt
+        color: #000
+        +clamp(4)
+        font-size: 13px
+      .more
+        padding: 10px 0
+        color: #e7654b
+        text-transform: uppercase
+        text-decoration: underline
+        font-size: 15px
+  .article
+    display: block
+    margin-bottom: 30px
+    &:hover
+      .des
+        span
+          color: $vang
+        button
+          color: $vang
+    .wrapper
+      width: 45%
+      float: left
+      .box-thumbnail
+        padding-top: 67.567%
+    .des
+      float: left
+      width: 55%
+      padding-left: 30px
+      color: #585858
+      span
+        text-transform: uppercase
+        font-weight: bold
+        font-size: 21px
+        +transi(.3s)
+        +clamp(3)
+      p
+        +clamp(3)
+        margin-bottom: 5px
+      .auth
+        display: block
+        padding: 5px 0
+      button
+        width: 125px
+        border: 1px solid #E1E1E1
+        background-color: transparent
+        padding: 10px
+        cursor: pointer
+        +transi(.3s)
+  &.detail
+    h1
+      font-size: 26px
+      font-weight: 500
+/* ===================
+ * Page Project
+ * 1. List of posts
+ * 2. Article details
+ * =================== */
+.project
+  &.detail
+/* ===================
+ * Page Abouts us
+ * =================== */
+.talkaboutus
+  background-color: #eaeaea
+  color: #fff
+  .container
+    position: relative
+  .talkaboutus-arrow
+    position: absolute
+    z-index: 10
+    width: 40px
+    height: 40px
+    background-color: #000000
+    cursor: pointer
+    display: flex
+    align-items: center
+    justify-content: center
+    top: 50%
+    transform: translateY(-50%)
+    &[aria-disabled=true]
+      background-color: #797979
+    svg
+      color: #fff
+    &.left
+      left: 0px
+    &.right
+      right: 0px
+  .item
+    outline: none
+    cursor: pointer
+    padding: 0 50px
+  h2
+    font-size: 21px
+    color: $xanh
+    text-transform: uppercase
+  .talk-avatar
+    img
+      width: 102px
+      height: 102px
+      border-radius: 50%
+      margin: 0 auto
+  .talk-excerpt
+    font-size: 16px
+    color: $xanh
+    +clamp(4)
+  .talk-quote
+    margin: 20px 0
+    img
+      margin: 0 auto
+  .talk-name
+    color: $xanh
+    font-weight: 500
+  .talk-job
+    font-size: 14px
+    color: #000000
+/* ===================
+ * Page Services
+ * =================== */
+.services
+  .row
+    border: 1px solid $xanh
+    margin: 0 10px
+    .col
+      min-height: 180px
+      display: flex
+      flex-direction: column
+      justify-content: center
+      i
+        font-size: 30px
+        padding-bottom: 20px
+        color: $xanh
+      b
+        padding-bottom: 5px
+        font-size: 20px
+/* ===================
+ * Page Contact
+ * =================== */
+.contact
+  margin: 100px auto
+  .contact-ex
+    span
+      font-size: 26px
+      font-weight: bold
+    h2
+      font-size: 44px
+      color: $xanh
+      font-weight: bold
+    a
+      margin-right: 15px
+      color: $xanh
+      i
+        font-size: 35px
+  .social-contact
+    margin-top: 20px
+  form
+    input, textarea
+      width: 100%
+      height: 55px
+      padding: 0 20px
+      border: none
+      outline: none
+      color: $cam
+      background-color: #f3f3f3
+      display: block
+      margin-bottom: 10px
+      &::placeholder
+        color: $xanh
+    textarea
+      padding: 10px 20px
+      height: 120px
+    button
+      width: 100%
+      display: block
+      height: 55px
+      background-color: $cam
+      border: none
+      outline: none
+      color: #fff
+      cursor: pointer
+/* ===================
+ * Page Products
+ * =================== */
+.products
+  &.v2
+    padding-left: 0px
+    padding-right: 0px
+    .item
+      margin: 10px
+      position: relative
+      &.no-margin
+        margin: 10px 0
+      .des
+        width: calc(100% - 10px)
+        position: absolute
+        z-index: 10
+        bottom: 0px
+        left: 0px
+        padding: 20px 6px 3px 6px
+        margin: 5px 5px
+        background-image: linear-gradient(to bottom, transparent, #000)
+        span
+          color: #fff
+        p
+          color: #ffbc35
+  .filter
+    .filter-name
+      font-size: 20px
+      color: #333
+      font-weight: 500
+      margin-bottom: 10px
+      display: block
+    .filter-cate
+      label
+        display: inline-block
+        margin-bottom: 10px
+        margin-right: 6px
+        input[type="radio"]
+          display: none
+          &:checked ~ p
+            background-color: $cam
+            color: #fff
+        &:hover, &.active
+          p
+            background-color: $cam
+            color: #fff
+        p
+          font-size: 14px
+          margin-bottom: 0px
+          border: 1px solid #ccc
+          padding: 4px 15px
+          border-radius: 24px
+          cursor: pointer
+          +transi(.3s)
+    .filter-price
+      label
+        display: block
+        margin-bottom: 10px
+        margin-right: 6px
+        input
+          display: none
+          &:checked + span
+            background-color: #cam
+            color: #fff
+        span
+          font-size: 14px
+          margin-bottom: 0px
+          border: 1px solid #ccc
+          padding: 4px 15px
+          border-radius: 24px
+          cursor: pointer
+  #filter_product
+    .filter-product--sort
+      select
+        border: 1px solid #ccc
+        padding: 4px
+        background-color: transparent
+        cursor: pointer
+        outline: none
+  .item
+    margin: 0 10px
+    outline: none
+    // border: 1px solid #dcdcdc
+    padding: 5px
+    &:hover
+      .box-thumbnail
+        img
+          transform: scale(1.1)
+        .box-content
+          bottom: 20px
+          button.quickview
+            opacity: 1
+    .flex
+      display: flex
+      align-items: center
+      justify-content: center
+      .discount-price
+        font-size: 20px
+        color: #D13C3C
+        font-weight: 600
+      .price
+        margin-left: 8px
+        font-size: 15px
+        text-decoration: line-through
+        color: #8a8a8a
+    .box-thumbnail
+      padding-top: 71.736%
+      img
+        +transi(.8s)
+      .box-content
+        position: absolute
+        bottom: 0px
+        z-index: 10
+        left: 50%
+        transform: translateX(-50%)
+        +transi(.3s)
+        button.quickview
+          width: 140px
+          color: #222
+          padding: 8px 10px
+          border-radius: 50px
+          border: none
+          cursor: pointer
+          outline: none
+          opacity: 0
+          +transi(.5s)
+          &:hover
+            background-color: #222
+            color: #fff
+    > a
+      color: #000
+      height: 43px
+      line-height: 21px
+      margin-top: 3px
+      text-align: center
+      +transi(.3s)
+      +clamp(3)
+  .products-items
+    margin: 5px
+    .box-thumbnail
+      img
+        width: 100%
+.product-article
+  //Slider Picture
+  .slick-initialized .slick-slide
+    outline: none !important
+    cursor: pointer
+  .slick-slide
+    border: 1px solid transparent
+  .slick-current
+    border: 1px solid #dedede
+  .slider-for
+    padding: 5px
+    border: 1px solid #dedede
+    img
+      width: 100%
+  .slider-nav
+    margin-top: 5px
+    img
+      width: 100%
+      height: 137px
+      padding: 5px
+      object-fit: cover
+  //Excerpt Product
+  .excerpt
+    padding: 0px
+    .price
+      font-size: 26px
+      color: #ff4959
+      font-weight: 700
+    .price_market
+      color: #717171
+      u
+        text-decoration: line-through
+    .quantity
+      width: 131px
+      display: flex
+      align-items: center
+      border: 1px solid #e6e6e6
+      margin-right: 10px
+      input[type="text"]
+        width: 50px
+        height: 40px
+        text-align: center
+        background-color: #f7f7f7
+        border: none
+        outline: none
+        border-left: 1px solid #e6e6e6
+        border-right: 1px solid #e6e6e6
+      input[type="button"]
+        width: 40px
+        height: 40px
+        outline: none
+        cursor: pointer
+        border: none
+        +transi(.3s)
+        &:hover
+          color: #fff
+          background-color: #222
+    .product-excerpt
+      background-color: #e9ecef
+      border: 1px solid #fff
+      padding: 10px
+      margin: 15px -1px
+    .subm-pr
+      display: flex
+      align-item: center
+      svg
+        width: 25px
+      .add-cart
+        padding: 10px 50px
+        display: inline-block
+        background-color: #ff495a
+        color: #fff
+        text-transform: uppercase
+        border-radius: 3px
+      .favorite
+        display: flex
+        align-items: center
+        margin: 0 auto
+        cursor: pointer
+        svg
+          color: #ff495a
+  //Sidebar Product
+  .side-product
+    > b
+      border: 1px solid #fff
+      font-size: 18px
+      background-color: #b69656
+      display: block
+      text-align: center
+      color: #fff
+      font-weight: 400
+      padding: 6px 0
+      text-transform: uppercase
+      border-radius: 4px 4px 0 0
+    .commitment
+      background-color: #e9ecef
+      color: #676767
+      border-left: 1px solid #fff
+      border-right: 1px solid #fff
+      li
+        padding: 10px 10px 10px 22px
+        border-bottom: 1px solid #fff
+      b
+        position: relative
+        font-size: 14px
+        font-weight: 500
+        text-transform: uppercase
+        &:after
+          content: ""
+          position: absolute
+          z-index: 10
+          left: -16px
+          top: 50%
+          width: 12px
+          height: 12px
+          transform: translateY(-50%)
+          border: 1px solid $cam
+          border-radius: 50%
+          background-color: #fff
+      p
+        font-size: 14px
+        line-height: 17px
+        margin-bottom: 0px
+    .hotline
+      background-color: #e9ecef
+      color: #676767
+      border-radius: 0 0 4px 4px
+      border-left: 1px solid #fff
+      border-right: 1px solid #fff
+      li
+        display: flex
+        padding: 10px 0
+        border-bottom: 1px solid #fff
+        &:last-child
+          border-radius: 0 0 4px 4px
+      img
+        width: 45px
+        height: 45px
+        margin: 0 10px
+  //Info Product
+  h1
+    font-size: 23px
+  .body-product
+    h4
+      font-size: 20px
+      text-transform: uppercase
+      color: #545454
+      font-weight: 400
+    .body-product-c
+      padding: 20px
+      background-color: #ececec
+      border: 1px solid #fff
+/* ===================
+ * @extends('master') Small Part
+ * 1. Sidebar
+ * 2. Breadcrumb
+ * =================== */
+.sidebar
+  h2
+    font-size: 21px
+    position: relative
+    margin-bottom: 10px
+    &::after
+      content: ''
+      position: absolute
+      bottom: -4px
+      left: 0
+      width: 100px
+      height: 2px
+      background-color: $vang
+  .s-item
+    display: block
+    margin: 20px 0
+    &:hover
+      span
+        color: $vang
+    .thumbnail
+      width: 35%
+      float: left
+      img
+        width: 100%
+        object-fit: cover
+    span
+      color: $xanh
+      width: 65%
+      float: left
+      padding-left: 10px
+      font-size: 15px
+      line-height: 19px
+      +transi(.4s)
+      +clamp(3)
+.breadcrumb
+  background-color: transparent
+  &.v2
+    padding: 0.75rem 0
+  &.c
+    a, li
+      color: #f3f3f3
+    .breadcrumb-item+.breadcrumb-item::before
+      color: #adadad
+  //   a, li
+  //     color: #f3f3f3
+  //   .breadcrumb-item+.breadcrumb-item::before
+  //     color: #adadad
+  a
+    color: $xanh
+.breadcrumb-mobie
+  display: none
+/* ===================
+ * Cart
+ * =================== */
+#empty-cart
+  border: 1px dashed $cam
+  padding: 20px
+  a
+    background-color: $cam
+    color: #fff
+    padding: 10px 20px
+    border-radius: 33px
+    margin-top: 20px
+.cart
+  .cart-price
+    color: $cam !important
+    sup
+      color: $cam !important
+  .continue_shopping
+    display: flex
+    align-items: center
+    background-color: $cam
+    color: #fff
+    padding: 10px
+    width: 180px
+    justify-content: space-around
+    margin-top: 10px
+    transition: all ease .5s
+    &:hover
+      background-color: $cam
+    svg
+      width: 8px
+  table
+    border: 1px solid #e6e6e6
+    width: 100%
+    background-color: #fff
+    thead
+      th
+        color: #555
+        padding-top: 18px
+        padding-bottom: 18px
+        text-align: center
+        text-transform: uppercase
+        min-width: 120px
+        &:first-child
+          text-align: left
+          padding-left: 30px
+    tbody
+      tr
+        border-top: 1px solid #e6e6e6
+        border-bottom: 1px solid #e6e6e6
+        +transi(.3s)
+        &:hover
+          background-color: #ececec
+        &:nth-of-type(odd)
+          background-color: #ececec
+      td
+        padding: 20px 0
+        text-align: center
+        &:first-child
+          padding-left: 30px
+      a
+        color: #555
+        &:hover
+          color: $cam
+    .pr
+      display: flex
+    .thumbnail
+      border: 1px solid #e0e0e0
+      padding: 2px
+      min-width: 100px
+      max-width: 100px
+      margin-right: 10px
+      position: relative
+      &:hover
+        .bg
+          opacity: 1
+      img
+        width: 100%
+        object-fit: cover
+      .bg
+        opacity: 0
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%,-50%)
+        color: #fff
+        background-color: rgba(0, 0, 0, 0.43)
+        width: 100%
+        height: 100%
+        display: flex
+        align-items: center
+        justify-content: center
+        cursor: pointer
+        +transi(.3s)
+    .quantity
+      width: 131px
+      display: flex
+      align-items: center
+      border: 1px solid #e6e6e6
+      margin: 0 auto
+      input
+        width: 50px
+        height: 40px
+        text-align: center
+        background-color: #f7f7f7
+        border: none
+        outline: none
+        border-left: 1px solid #e6e6e6
+        border-right: 1px solid #e6e6e6
+      input[type="button"]
+        width: 40px
+        height: 40px
+        outline: none
+        cursor: pointer
+        border: none
+        +transi(.3s)
+        &:hover
+          color: #fff
+          background-color: #222
+    .discount-price
+      font-size: 25px
+      color: red
+      font-weight: 600
+    .price
+      text-decoration: line-through
+      color: #868686
+  .purchase_information
+    border: 1px solid #e6e6e6
+    padding: 0 25px
+    background-color: #fff
+    h3
+      font-size: 20px
+      text-transform: uppercase
+      font-weight: 600
+      color: $cam
+    .total
+      font-size: 20px
+      font-weight: 600
+      text-transform: uppercase
+      span:nth-of-type(even)
+        padding-right: 20px
+        color: $cam
+      sup
+        color: $cam
+      p
+        color: #444444
+    .cart_order
+      width: 100%
+      height: 50px
+      border-radius: 50px
+      color: #fff
+      background-color: $cam
+      text-transform: uppercase
+      font-weight: 500
+      display: flex
+      align-items: center
+      justify-content: center
+      cursor: pointer
+      outline: none
+      border: none
+      +transi(.3s)
+      &:hover
+        background-color: $cam
+    form
+      .select2-container .select2-selection--single
+        outline: none
+        height: 40px
+        border: 1px solid #e6e6e6
+      .select2-container--default .select2-selection--single .select2-selection__rendered
+        line-height: 40px
+        font-size: 13px
+        padding-left: 20px
+        color: #555
+      .select2-search--dropdown .select2-search__field
+        outline: none
+      label
+        width: 100%
+        margin-bottom: 15px
+        input
+          width: inherit
+          height: 40px
+          padding: 0 20px
+          border: 1px solid #e6e6e6
+          font-size: 13px
+          outline: none
+          &::placeholder
+            color: #555
+        textarea
+          width: 100%
+          border: 1px solid #ececec
+          border-radius: 4px
+          padding: 10px 16px
+          font-size: 14px
+          outline: none
+.wrapper-quickview
+  position: fixed
+  width: 100%
+  height: 100vh
+  top: 0
+  left: 0
+  z-index: 9000
+  overflow: auto
+  -webkit-transition: all 0.4s
+  -o-transition: all 0.4s
+  -moz-transition: all 0.4s
+  transition: all 0.4s
+  visibility: hidden
+  opacity: 0
+  &.display
+    visibility: visible
+    opacity: 1
+  .overlay-modal
+    position: fixed
+    z-index: -1
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    background: #000
+    opacity: 0.8
+  .container
+    max-width: 1380px
+    height: 608px
+    background-color: #fff
+    position: relative
+    //thoát khỏi quickview
+    > i
+      position: absolute
+      font-size: 33px
+      color: #9a9a9a
+      right: 0
+      top: -30px
+      cursor: pointer
+    .slick-list.draggable
+      height: 548px !important
+    .quickview-nav
+      width: 20%
+      float: left
+      .item
+        margin: 5px 10px
+        outline: none
+        cursor: pointer
+        img
+          width: 100%
+          max-height: 100px
+          object-fit: cover
+    .quickview-for
+      width: 80%
+      float: left
+      position: relative
+      img
+        width: 100%
+        max-height: 548px
+        object-fit: cover
+      //Button arrows quickview for
+      .arrows-quickview-for
+        button
+          width: 45px
+          height: 45px
+          background-color: $vang
+          border: none
+          cursor: pointer
+          position: absolute
+          outline: none
+          top: 50%
+          z-index: 10
+          transform: translateY(-50%)
+          &.arrows-quickview-for-left
+            left: 0
+          &.arrows-quickview-for-right
+            right: 0
+    .content
+      > span
+        font-size: 20px
+        font-weight: 500
+        color: #333
+      button.addcart
+        width: 177px
+        height: 45px
+        color: #fff
+        font-weight: 500
+        outline: none
+        border: none
+        cursor: pointer
+        padding: 0 20px
+        border-radius: 40px
+        background-color: $vang
+        text-transform: uppercase
+        +transi(.3s)
+        &:hover
+          background-color: #222
+      .quantity
+        width: 140px
+        display: flex
+        align-items: center
+        border: 1px solid #e6e6e6
+        input[type="text"]
+          width: 55px
+          height: 45px
+          text-align: center
+          background-color: #f7f7f7
+          border: none
+          outline: none
+          border-left: 1px solid #e6e6e6
+          border-right: 1px solid #e6e6e6
+        input[type="button"]
+          width: 45px
+          height: 45px
+          outline: none
+          cursor: pointer
+          border: none
+      .discount-price
+        font-size: 25px
+        color: red
+        font-weight: 600
+      .price
+        text-decoration: line-through
+        color: #868686
+      .social
+        font-size: 20px
+        a
+          display: inline-block
+          margin: 10px
+        i
+          color: $xanh
+.user
+  h2
+    font-weight: 400
+    font-size: 20px
+  .favourite
+    border: 1px solid #ececec
+    background-color: #fff
+    table
+      .thumbnail
+        img
+          width: 80px
+          height: 80px
+  .button-add-location
+    margin-top: 20px
+    width: 170px
+    display: block
+    margin-left: auto
+    text-align: center
+    color: #fff
+    background-color: $cam
+    padding: 10px
+  .button-create-location
+    justify-content: flex-end
+    margin-bottom: 30px
+    margin-right: 30px
+    button, a
+      width: 160px
+      padding: 7px
+      color: #fff
+      border: 1px solid #ececec
+      background-color: $cam
+      cursor: pointer
+      outline: none
+      text-align: center
+      &.canel
+        margin-right: 10px
+        background-color: #eff0f5
+        border-color: #dadada
+        color: #757575
+  .about-account
+    .nav-container
+      > li
+        padding-bottom: 20px
+        > a
+          color: #424242
+          font-weight: 500
+        > ul
+          padding-left: 15px
+          a
+            font-size: 14px
+            color: #757575
+            &.active
+              color: $cam
+              font-weight: 500
+  .layout-address-acount
+    background-color: #fff
+    padding: 20px
+    font-size: 14px
+    border: 1px solid #ececec
+    table
+      width: 100%
+      th
+        padding: 10px
+        background-color: #f9f9f9
+      td
+        padding: 10px 10px 20px
+        border-bottom: 1px solid #f9f9f9
+    form
+      label
+        width: 100%
+      input[type='text']
+        display: block
+        width: 100%
+        padding: 7px
+        border-radius: 3px
+        border: 1px solid #ececec
+  .about-account--content
+    border: 1px solid #ececec
+    font-size: 14px
+    .dashbroad-profile
+      background-color: #fff
+      width: calc(100% - 15px)
+      padding: 0 20px
+      min-height: 150px
+    .dashbroad-address
+      background-color: #fff
+      padding: 0 20px
+      min-height: 150px
+    p
+      margin-bottom: 0px
+    .dashboard-mod-title
+      display: flex
+      justify-content: left
+      align-items: center
+      padding: 13px 0
+      a
+        color: $cam
+      h4
+        font-size: 16px
+        font-weight: 400
+        margin-bottom: 0px
+        border-right: 1px solid $cam
+        padding-right: 4px
+        margin-right: 4px
+  .my-profile
+    background-color: #fff
+    .my-profile-item
+      padding-right: 20px
+      input[type="text"]
+        width: 100%
+        padding: 8px
+        border: 1px solid #ececec
+        outline: none
+    .my-profile-item-title
+      font-size: 12px
+      padding-bottom: 10px
+    .my-profile-item-info
+      font-size: 15px
+      &.date
+        display: flex
+        align-items: center
+        justify-content: end
+        select
+          width: 33.333%
+          padding: 8px 3px
+          border: 1px solid #ececec
+          margin-right: 4px
+          outline: none
+    .my-profile-ft
+      a, button
+        width: 222px
+        display: block
+        text-transform: uppercase
+        color: #fff
+        padding: 15px
+        text-align: center
+        background-color: $cam
+        margin-bottom: 20px
+        border: none
+        cursor: pointer
+        border: 1px solid #d8d8d8
+#login-user
+  &.sign-in
+  h2
+    font-size: 20px
+    color: $cam
+  form
+    width: 400px
+    margin: 0 auto
+  label
+    width: 100%
+    input
+      width: 100%
+      padding: 10px
+      outline: none
+      border-radius: 30px
+      border: 1px solid #d4d4d4
+      padding-left: 23px
+      font-size: 14px
+      transition: all ease .3s
+      color: $cam
+      &:focus
+        border: 1px solid $cam
+  button
+    display: block
+    width: 100%
+    background-color: $cam
+    color: #fff
+    outline: none
+    border: none
+    padding: 10px
+    border-radius: 30px
+    cursor: pointer

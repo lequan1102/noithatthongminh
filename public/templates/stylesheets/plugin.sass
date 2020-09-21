@@ -1,0 +1,1195 @@
+/* @Mixin & @extend */
+.boxz
+  box-sizing: border-box
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  -ms-box-sizing: border-box
+  -o-box-sizing: border-box
+=calc($property, $expression)
+  #{$property}: -moz-calc(#{$expression})
+  #{$property}: -webkit-calc(#{$expression})
+  #{$property}: calc(#{$expression})
+=transi($s)
+  -webkit-transition: all ease $s
+  -moz-transition: all ease $s
+  -ms-transition: all ease $s
+  -o-transition: all ease $s
+  transition: all ease $s
+=transform($property)
+  -webkit-transform: $property
+  -moz-transform: $property
+  -ms-transform: $property
+  -o-transform: $property
+  transform: $property
+=animation($property)
+  -webkit-animation: $property
+  -moz-animation: $property
+  -ms-animation: $property
+  -o-animation: $property
+  animation: $property
+/*resetcss*/
+*
+  margin: 0
+  padding: 0
+  @extend .boxz
+*, *:before, *:after
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+html, body
+  width: 100%
+  height: 100%
+  font-family: 'Roboto', sans-serif
+  background-color: #fff
+p
+  margin-bottom: 0px
+.clear
+  clear: both
+  &:after
+    content: ''
+    clear: both
+    display: block
+.clear__
+  margin-left: 0px
+  margin-right: 0px
+.clear_
+  margin-left: -15px
+  margin-right: -15px
+.clear-p
+  padding: 0 !important
+li, ul
+  list-style: none
+  margin-bottom: 0px
+a, a:hover
+  text-decoration: none
+/*Primary Color*/
+$trang: #fff
+$den: #000
+$default: #444444
+$xanhduong: #2673b4
+$orange: #e59b28
+/*Menu Mobie*/
+[mobie]
+  width: 100%
+  display: none
+  padding: 10px 20px
+  position: fixed
+  z-index: 20
+  top: 0
+  left: 0
+  background-color: #e7654b
+  align-items: center
+  justify-content: space-between
+  .bar
+    cursor: pointer
+    i
+      font-size: 30px
+      color: #fff
+  .logo-mobie
+    max-width: 39px
+    img
+      max-width: inherit
+  .cart
+    i
+      font-size: 30px
+      color: #fff
+main, footer,[mobie]
+  transition: all ease .5s
+.wrapper
+  &.open-mb
+    main, footer,[mobie]
+      transform: translateX(250px)
+    [menumobie]
+      #mobie-bg
+        visibility: visible
+      .wrapper-menu
+        left: 250px
+[menumobie]
+  position: fixed
+  z-index: 100
+  top: 0
+  left: 0
+  transition: all ease .5s
+  #mobie-bg
+    position: fixed
+    z-index: -1
+    top: 0
+    right: 0
+    width: 100%
+    height: 100%
+    background-color: rgba(0, 0, 0, 0.31)
+    visibility: hidden
+  .wrapper-menu
+    background-color: #363636
+    transition: all ease .5s
+    transform: translateX(-250px)
+    width: 250px
+    height: 100%
+    position: fixed
+    z-index: 1000
+    top: 0
+    left: 0
+    .mb-close
+      width: 100%
+      height: 53px
+      color: #fff
+      background-color: #4E4E4E
+      display: flex
+      align-items: center
+      padding-left: 20px
+      cursor: pointer
+      i
+        font-size: 20px
+        margin-right: 8px
+    form
+      margin: 15px 20px 0
+      border: 1px solid #A1A1A1
+      display: flex
+      align-items: center
+      input
+        background-color: transparent
+        outline: none
+        border: none
+        padding: 5px 0 5px 10px
+        color: #fff
+      button
+        outline: none
+        background-color: transparent
+        border: none
+        color: #fff
+        padding: 5px 10px
+        transform: translateX(-20px)
+        cursor: pointer
+    nav
+      ul.about-user
+        border-bottom: 1px solid #6f6f6f
+        margin: 15px 20px
+        padding-bottom: 15px
+        a
+          padding: 8px 0
+        i
+          width: 25px
+      ul.social
+        margin: 15px 13px
+        padding-top: 7px
+        border-top: 1px solid #6f6f6f
+        li
+          display: inline-block
+          a
+            padding: 8px
+      ul
+        a
+          color: #fff
+          display: block
+          padding: 8px 20px
+.menumobie-mega
+  width: 260px
+  height: 100%
+  position: fixed
+  z-index: 9999
+  top: 0
+  left: -260px
+  background-color: rgba(255,255,255,0.95)
+  transition: all ease .2s
+  form
+    margin-bottom: 10px
+    position: relative
+    height: 35px
+    input
+      width: 100%
+      height: 35px
+      border: none
+      padding: 15px
+      outline: none
+    button
+      background-color: transparent
+      border: none
+      cursor: pointer
+      position: absolute
+      right: 10px
+      padding: 10px
+      outline: none
+    svg
+      width: 16px
+  .wrapper_mb
+    position: relative
+    height: 100%
+    width: 100%
+    overflow: overlay
+    &::-webkit-scrollbar
+      width: 3px
+      background-color: #ececec
+    &::-webkit-scrollbar-thumb
+      background-color: #cccccc
+  .logo_sub
+    img
+      width: 100px
+      padding: 11px
+  .onmouser_out
+    position: absolute
+    right: 0
+    top: 0
+    margin: 3px 16px
+    font-size: 25px
+    color: #8e8e8e
+    i
+      cursor: pointer
+      transition: all ease .2s
+      &:hover
+        color: #153677
+  ul.sub-megamenu
+    li.login
+      line-height: 27px
+      a
+        background-color: #014d98
+        color: $trang
+        svg
+          width: 25px
+          height: 25px
+          float: left
+          display: block
+          margin: 10px 10px 10px 0
+    > li
+      border-bottom: 1px solid #e8e8e8
+      &.m
+        margin: 10px 15px
+      &.is-sub
+        .fa-angle-right
+          display: none
+        svg
+          width: 10px
+          transform: translate(0,3px)
+          color: $default
+        &.show_mega
+          background-color: #dedede
+          .sub-submenu
+            opacity: 1
+            max-height: 500px
+            z-index: 10
+            background-color: #dedede
+            padding-left: 15px
+            .is-sub
+              &.show_mega
+                button svg
+                  transform: translate(0, 3px) rotate(180deg)
+            button svg
+              transform: translate(0, 3px) rotate(0deg)
+          button svg
+            transform: translate(0, 3px) rotate(90deg)
+        > a
+          float: left
+          width: 80%
+        button
+          background-color: transparent
+          border: none
+          outline: none
+          width: 20%
+          color: #153677
+          font-size: 16px
+          height: 45px
+          cursor: pointer
+          i
+            transition-duration: .3s
+      a
+        padding-left: 20px
+        text-transform: uppercase
+        color: #333333
+        display: block
+        font-size: 14px
+        height: 45px
+        line-height: 45px
+        &:hover
+          background-color: #014d98
+          color: $trang
+      select
+        padding: 8px
+        background-color: transparent
+        width: 100%
+        border: 1px solid #153677
+        color: #153677
+      .sub-submenu
+        position: relative
+        max-height: 0px
+        z-index: -1
+        opacity: 0
+        transition-duration: .3s
+        > li
+          position: relative
+          &.show_mega
+            .sub-submenu
+              display: block
+            button
+              transform: rotate(-90deg)
+          > .sub-submenu
+            display: none
+          button
+            height: 40px
+            position: absolute
+            right: 0
+            top: 0
+          a
+            height: 40px
+            line-height: 40px
+            padding-left: 20px
+          &:hover
+            background-color: #c7c7c7
+.underline
+  text-decoration: underline
+.upp
+  text-transform: uppercase
+.relative
+  position: relative
+.bg-gradient
+  background: linear-gradient(180deg, #f6f7f9 0%, #ebebeb 100%)
+.bg-gradient-cricle
+  background: radial-gradient(circle, rgba(254,222,50,1) 0%, rgba(255,154,62,1) 100%)
+.shadown
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.03)
+.radius
+  border-radius: 5px !important
+.none-radius
+  border-radius: 0px
+.border
+  border-radius: 5px
+  border: 1px solid #ececec
+.border-top-left
+  border-top-left-radius: 5px
+.border-top-right
+  border-top-right-radius: 5px
+.border-right-bottom
+  border-bottom-right-radius: 5px
+.border-bottom-left
+  border-bottom-left-radius: 5px
+/*width*/
+.w30
+  width: 30%
+.w50
+  width: 50%
+.w70
+  width: 70%
+.w80
+  width: 80%
+.w100
+  width: 100%
+.h80
+  height: 80px
+.h100
+  height: 100%
+/*Padding*/
+.p5
+  padding: 5px
+.p10
+  padding: 10px
+.p15
+  padding: 15px
+.p20
+  padding: 20px !important
+.p30
+  padding: 30px !important
+.p40
+  padding: 40px !important
+.p50
+  padding: 50px !important
+.p15-10
+  padding: 15px 10px !important
+.p13-10
+  padding: 13px 10px !important
+    /*padding-top*/
+.pt5
+  padding-top: 5px
+.pt10
+  padding-top: 10px
+.pt15
+  padding-top: 15px
+.pt20
+  padding-top: 20px
+.pt30
+  padding-top: 30px
+.pt40
+  padding-top: 40px
+.pt50
+  padding-top: 50px
+    /*padding-bottom*/
+.pb5
+  padding-bottom: 5px
+.pb10
+  padding-bottom: 10px
+.pb15
+  padding-bottom: 15px
+.pb20
+  padding-bottom: 20px
+.pb30
+  padding-bottom: 30px
+.pb40
+  padding-bottom: 40px
+.pb50
+  padding-bottom: 50px
+    /*padding-left*/
+.pl5
+  padding-left: 5px
+.pl10
+  padding-left: 10px
+.pl15
+  padding-left: 15px
+.pl20
+  padding-left: 20px
+.pl30
+  padding-left: 30px
+.pl40
+  padding-left: 40px
+.pl50
+  padding-left: 50px
+    /*padding-right*/
+.pr5
+  padding-right: 5px
+.pr10
+  padding-right: 10px
+.pr15
+  padding-right: 15px
+.pr20
+  padding-right: 20px
+.pr30
+  padding-right: 30px
+.pr40
+  padding-right: 40px
+.pr50
+  padding-right: 50px
+
+/*Margin*/
+.m5
+  margin: 5px
+.m10
+  margin: 10px
+.m15
+  margin: 15px
+.m20
+  margin: 20px
+.m30
+  margin: 30px
+.m40
+  margin: 40px
+.m50
+  margin: 50px
+.m15-10
+  margin: 15px 10px
+    /*margin-top*/
+.mt5
+  margin-top: 5px
+.mt10
+  margin-top: 10px
+.mt15
+  margin-top: 15px
+.mt20
+  margin-top: 20px
+.mt30
+  margin-top: 30px
+.mt40
+  margin-top: 40px
+.mt45
+  margin-top: 45px
+.mt50
+  margin-top: 50px
+    /*margin-bottom*/
+.mb5
+  margin-bottom: 5px
+.mb10
+  margin-bottom: 10px
+.mb15
+  margin-bottom: 15px
+.mb20
+  margin-bottom: 20px
+.mb30
+  margin-bottom: 30px
+.mb40
+  margin-bottom: 40px
+.mb50
+  margin-bottom: 50px
+    /*margin-left*/
+.ml5
+  margin-left: 5px
+.ml10
+  margin-left: 10px
+.ml15
+  margin-left: 15px
+.ml20
+  margin-left: 20px
+.ml30
+  margin-left: 30px
+.ml40
+  margin-left: 40px
+.ml50
+  margin-left: 50px
+/*margin-right*/
+.mr5
+  margin-right: 5px
+.mr10
+  margin-right: 10px
+.mr15
+  margin-right: 15px
+.mr20
+  margin-right: 20px
+.mr30
+  margin-right: 30px
+.mr40
+  margin-right: 40px
+.mr50
+  margin-right: 50px
+/* ==============================
+ * Checkbox
+ ================================ */
+a#up
+  width: 40px
+  height: 40px
+  display: block
+  position: fixed
+  bottom: 20px
+  right: 27px
+  z-index: 54
+  border: 2px solid #fff
+  box-shadow: 0 1px 1px rgba(173, 168, 168, 0.1)
+  background-color: #e7654b
+  visibility: hidden
+  &.show
+    visibility: visible
+  svg
+    position: absolute
+    width: 13px
+    height: 18px
+    color: #fff
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+/* ==============================
+ * Checkbox
+ * <label class="selection cursor-pointer">
+      <input type="checkbox" name="checkbox[]" value="19">
+      <div class="wrap_checkbox">
+        <div class="checkbox"></div>
+      </div>
+    </label>
+ * ============================== */
+.selection
+  input
+    display: none
+    &:checked + .wrap_checkbox .checkbox
+      background-color: #8e8e8e
+  .wrap_checkbox
+    border: 1px solid #ccc
+    padding: 2px
+    width: 16px
+    height: 16px
+    display: inline-flex
+    border-radius: 50%
+    .checkbox
+      width: 10px
+      height: 10px
+      border-radius: 50%
+/* ==============================
+ * Call spread out
+ * ============================== */
+.blob
+  background: black
+  border-radius: 50%
+  margin: 10px
+  height: 20px
+  width: 20px
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1)
+  transform: scale(1)
+  animation: pulse 2s infinite
+@keyframes pulse
+  0%
+    transform: scale(0.95)
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7)
+  70%
+    transform: scale(1)
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0)
+  100%
+    transform: scale(0.95)
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0)
+/* ==============================
+ * Call Fixed
+ * ============================== */
+.Phone
+  position: fixed
+  display: block
+  margin: 0
+  width: 1em
+  height: 1em
+  font-size: 50px
+  background-color: #e59b28
+  border-radius: 0.5em
+  box-shadow: 0 0 0 0em rgba(52, 152, 219, 0), 0em 0.05em 0.1em rgba(0, 0, 0, 0.2)
+  -webkit-transform: translate3d(0, 0, 0) scale(1)
+  transform: translate3d(0, 0, 0) scale(1)
+  bottom: 50px
+  left: 50px
+  &:before
+    position: absolute
+    content: ""
+    top: 0
+    left: 0
+    width: 1em
+    height: 1em
+    background-color: rgba(255, 255, 255, 0.1)
+    border-radius: 100%
+    opacity: 1
+    +transform(translate3d(0, 0, 0) scale(0))
+  &:after
+    position: absolute
+    content: ""
+    top: 0.25em
+    left: 0.25em
+    width: 0.5em
+    height: 0.5em
+    background: url('../img/phone.svg')
+    background-position: 50% 50%
+    background-repeat: no-repeat
+    background-size: cover
+    +transform(translate3d(0, 0, 0))
+  &.is-animating
+    +animation(phone-outer 3000ms infinite)
+    &:before
+      +animation(phone-inner 3000ms infinite)
+    &:after
+      +animation(phone-icon 3000ms infinite)
+@-webkit-keyframes phone-outer
+  0%
+    +transform(translate3d(0, 0, 0) scale(1))
+    box-shadow: 0 0 0 0em rgba(52, 152, 219, 0), 0em 0.05em 0.1em rgba(0, 0, 0, 0.2)
+  33.3333%
+    +transform(translate3d(0, 0, 0) scale(1.1))
+    box-shadow: 0 0 0 0em rgba(52, 152, 219, 0.1), 0em 0.05em 0.1em rgba(0, 0, 0, 0.5)
+  66.6666%
+    +transform(translate3d(0, 0, 0) scale(1))
+    box-shadow: 0 0 0 0.5em rgba(52, 152, 219, 0), 0em 0.05em 0.1em rgba(0, 0, 0, 0.2)
+  100%
+    +transform(translate3d(0, 0, 0) scale(1))
+    box-shadow: 0 0 0 0em rgba(52, 152, 219, 0), 0em 0.05em 0.1em rgba(0, 0, 0, 0.2)
+@keyframes phone-outer
+  0%
+    +transform(translate3d(0, 0, 0) scale(1))
+    box-shadow: 0 0 0 0em rgba(52, 152, 219, 0), 0em 0.05em 0.1em rgba(0, 0, 0, 0.2)
+  33.3333%
+    +transform(translate3d(0, 0, 0) scale(1))
+    box-shadow: 0 0 0 0em rgba(52, 152, 219, 0.1), 0em 0.05em 0.1em rgba(0, 0, 0, 0.5)
+  66.6666%
+    +transform(translate3d(0, 0, 0) scale(1))
+    box-shadow: 0 0 0 0.5em rgba(52, 152, 219, 0), 0em 0.05em 0.1em rgba(0, 0, 0, 0.2)
+  100%
+    +transform(translate3d(0, 0, 0) scale(1))
+    box-shadow: 0 0 0 0em rgba(52, 152, 219, 0), 0em 0.05em 0.1em rgba(0, 0, 0, 0.2)
+@-webkit-keyframes phone-inner
+  0%
+    opacity: 1
+    +transform(translate3d(0, 0, 0) scale(0))
+  33.3333%
+    opacity: 1
+    +transform(translate3d(0, 0, 0) scale(0.9))
+  66.6666%
+    opacity: 0
+    +transform(translate3d(0, 0, 0) scale(0))
+  100%
+    opacity: 0
+    +transform(translate3d(0, 0, 0) scale(0))
+@keyframes phone-inner
+  0%
+    opacity: 1
+    +transform(translate3d(0, 0, 0) scale(0))
+  33.3333%
+    opacity: 1
+    +transform(translate3d(0, 0, 0) scale(0.9))
+  66.6666%
+    opacity: 0
+    +transform(translate3d(0, 0, 0) scale(0))
+  100%
+    opacity: 0
+    +transform(translate3d(0, 0, 0) scale(0))
+@-webkit-keyframes phone-icon
+  0%
+    +transform(translate3d(0em, 0, 0))
+  2%
+    +transform(translate3d(0.01em, 0, 0))
+  4%
+    +transform(translate3d(-0.01em, 0, 0))
+  6%
+    +transform(translate3d(0.01em, 0, 0))
+  8%
+    +transform(translate3d(-0.01em, 0, 0))
+  10%
+    +transform(translate3d(0.01em, 0, 0))
+  12%
+    +transform(translate3d(-0.01em, 0, 0))
+  14%
+    +transform(translate3d(0.01em, 0, 0))
+  16%
+    +transform(translate3d(-0.01em, 0, 0))
+  18%
+    +transform(translate3d(0.01em, 0, 0))
+  20%
+    +transform(translate3d(-0.01em, 0, 0))
+  22%
+    +transform(translate3d(0.01em, 0, 0))
+  24%
+    +transform(translate3d(-0.01em, 0, 0))
+  26%
+    +transform(translate3d(0.01em, 0, 0))
+  28%
+    +transform(translate3d(-0.01em, 0, 0))
+  30%
+    +transform(translate3d(0.01em, 0, 0))
+  32%
+    +transform(translate3d(-0.01em, 0, 0))
+  34%
+    +transform(translate3d(0.01em, 0, 0))
+  36%
+    +transform(translate3d(-0.01em, 0, 0))
+  38%
+    +transform(translate3d(0.01em, 0, 0))
+  40%
+    +transform(translate3d(-0.01em, 0, 0))
+  42%
+    +transform(translate3d(0.01em, 0, 0))
+  44%
+    +transform(translate3d(-0.01em, 0, 0))
+  46%
+    +transform(translate3d(0em, 0, 0))
+@keyframes phone-icon
+  0%
+    -webkit-transform: translate3d(0em, 0, 0)
+            transform: translate3d(0em, 0, 0)
+
+  2%
+    -webkit-transform: translate3d(0.01em, 0, 0)
+            transform: translate3d(0.01em, 0, 0)
+
+  4%
+    -webkit-transform: translate3d(-0.01em, 0, 0)
+            transform: translate3d(-0.01em, 0, 0)
+
+  6%
+    -webkit-transform: translate3d(0.01em, 0, 0)
+            transform: translate3d(0.01em, 0, 0)
+
+  8%
+    -webkit-transform: translate3d(-0.01em, 0, 0)
+            transform: translate3d(-0.01em, 0, 0)
+
+  10%
+    -webkit-transform: translate3d(0.01em, 0, 0)
+            transform: translate3d(0.01em, 0, 0)
+
+  12%
+    -webkit-transform: translate3d(-0.01em, 0, 0)
+            transform: translate3d(-0.01em, 0, 0)
+
+  14%
+    -webkit-transform: translate3d(0.01em, 0, 0)
+            transform: translate3d(0.01em, 0, 0)
+
+  16%
+    -webkit-transform: translate3d(-0.01em, 0, 0)
+            transform: translate3d(-0.01em, 0, 0)
+
+  18%
+    -webkit-transform: translate3d(0.01em, 0, 0)
+            transform: translate3d(0.01em, 0, 0)
+
+  20%
+    -webkit-transform: translate3d(-0.01em, 0, 0)
+            transform: translate3d(-0.01em, 0, 0)
+
+  22%
+    -webkit-transform: translate3d(0.01em, 0, 0)
+            transform: translate3d(0.01em, 0, 0)
+
+  24%
+    -webkit-transform: translate3d(-0.01em, 0, 0)
+            transform: translate3d(-0.01em, 0, 0)
+
+  26%
+    -webkit-transform: translate3d(0.01em, 0, 0)
+            transform: translate3d(0.01em, 0, 0)
+
+  28%
+    -webkit-transform: translate3d(-0.01em, 0, 0)
+            transform: translate3d(-0.01em, 0, 0)
+
+  30%
+    -webkit-transform: translate3d(0.01em, 0, 0)
+            transform: translate3d(0.01em, 0, 0)
+
+  32%
+    -webkit-transform: translate3d(-0.01em, 0, 0)
+            transform: translate3d(-0.01em, 0, 0)
+
+  34%
+    -webkit-transform: translate3d(0.01em, 0, 0)
+            transform: translate3d(0.01em, 0, 0)
+
+  36%
+    -webkit-transform: translate3d(-0.01em, 0, 0)
+            transform: translate3d(-0.01em, 0, 0)
+
+  38%
+    -webkit-transform: translate3d(0.01em, 0, 0)
+            transform: translate3d(0.01em, 0, 0)
+
+  40%
+    -webkit-transform: translate3d(-0.01em, 0, 0)
+            transform: translate3d(-0.01em, 0, 0)
+
+  42%
+    -webkit-transform: translate3d(0.01em, 0, 0)
+            transform: translate3d(0.01em, 0, 0)
+
+  44%
+    -webkit-transform: translate3d(-0.01em, 0, 0)
+            transform: translate3d(-0.01em, 0, 0)
+
+  46%
+    -webkit-transform: translate3d(0em, 0, 0)
+            transform: translate3d(0em, 0, 0)
+/* ==============================
+ * Mirror
+ * ============================== */
+.mirror
+  width: 100%
+  position: relative
+  overflow: hidden
+  &:before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    width: 130%
+    height: 100%
+    z-index: 999
+    background-color: rgba(255, 255, 255, 0.3)
+    -webkit-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, -120%, 0)
+    -moz-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, -120%, 0)
+    -ms-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, -120%, 0)
+    -o-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, -120%, 0)
+    transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, -120%, 0)
+    -webkit-transition: all 0.8s ease
+    -moz-transition: all 0.8s ease
+    transition: all 0.8s ease
+  &:hover:before
+    -webkit-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 140%, 0)
+    -moz-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 140%, 0)
+    -ms-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 140%, 0)
+    -o-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 140%, 0)
+/* ==============================
+ * Lazy load images
+ * ============================== */
+.box-thumbnail
+  width: 100%
+  position: relative
+  overflow: hidden
+  display: block
+  img
+    width: 100%
+    height: 100%
+    object-fit: cover
+  .thumbnail-lazy
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    display: block
+    z-index: 1
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center center
+    transition: all .4s ease-in-out
+    -webkit-transition: all .4s ease-in-out
+    -moz-transition: all .4s ease-in-out
+    background-image: linear-gradient(to left,#f5f5f5 0,#efefef 15%,#f5f5f5 40%,#f5f5f5 100%)
+    background-repeat: no-repeat !important
+    background-color: #f5f5f5
+    background-size: 900px 1700px !important
+    background-position: center center !important
+    animation: pencipreload 1s infinite linear forwards
+    -webkit-animation: pencipreload 1s infinite linear forwards
+    &.loaded
+      background: transparent !important
+      overflow: hidden
+@-webkit-keyframes pencipreload
+  from
+    background-position: -800px 0
+  to
+    background-position: 100px 0
+@keyframes pencipreload
+  from
+    background-position: -800px 0
+  to
+    background-position: 100px 0
+/* ===================
+ * Pagination
+ * 1. Custom ul.pagination
+ * 2. Bootstrap 4
+ * =================== */
+ul.pagination
+  li
+    &.active
+      a, .page-link
+        color: #fff
+        background-color: #0093dd
+      &:hover
+        color: #fff
+        background-color: #0093dd
+    &.disabled
+      background-color: #fff !important
+      i, a
+        color: #909090
+        background-color: #fff
+      &:hover i, a
+        color: #909090
+        background-color: #fff !important
+    a, .page-link
+      position: relative
+      display: block
+      padding: .5rem .75rem
+      margin-left: -1px
+      line-height: 1.25
+      color: #0093dd
+      background-color: #fff
+      border: 1px solid #dee2e6
+      &:hover
+        color: #fff
+        background-color: #0093dd
+/*
+ * Tiêu đề chuyên mục
+ */
+.title
+  font-family: 'Montserrat', sans-serif
+  h2
+    font-size: 27px
+    color: #080021
+    font-weight: 600
+    text-transform: capitalize
+  .sub-products
+    img
+      width: 60px
+  // .medal
+  //   display: inline-block
+  //   position: relative
+  //   &::after
+  //     content: ""
+  //     width: 50px
+  //     height: 2px
+  //     background-color: #080021
+  //     position: absolute
+  //     top: 50%
+  //     transform: translateY(-50%)
+  //     left: 30px
+  //   &::before
+  //     content: ""
+  //     width: 50px
+  //     height: 2px
+  //     background-color: #080021
+  //     position: absolute
+  //     top: 50%
+  //     transform: translateY(-50%)
+  //     left: -65px
+  //   i
+  //     font-size: 30px
+/*
+ * Tiêu đề chuyên mục sản phẩm
+ */
+.title-product
+  border-bottom: 2px solid #BFBFBF
+  display: flex
+  align-items: center
+  justify-content: space-between
+  margin: 20px 10px
+  &.v2
+    margin: 20px 15px
+    h2
+      color: #545454
+      font-weight: 400
+  h2
+    font-size: 23px
+    font-family: 'Roboto', sans-serif
+    margin-bottom: 0px
+  .arrow
+    display: flex
+    align-items: center
+    margin-bottom: 5px
+    .ar
+      background-color: #ececec
+      border-radius: 50%
+      width: 35px
+      height: 35px
+      display: flex
+      align-items: center
+      justify-content: center
+      cursor: pointer
+      +transi(.2s)
+      &:first-child
+        margin-right: 10px
+      &:hover
+        background-color: #080021
+        i
+          color: #fff
+/* ==============================
+ * Preview Search Product
+ * ============================== */
+.search-preview
+  max-width: 600px
+  position: absolute
+  top: 77px
+  z-index: 10
+  background-color: #fff
+  padding: 20px
+  transition: all ease .5s
+  transform-origin: 0px 0px 0px
+  transform: rotateX(90deg)
+  perspective: 1000px
+  border-radius: 0 0 5px 5px
+  .item-product
+    display: flex
+    align-items: center
+    justify-content: space-between
+    background-color: whitesmoke
+    margin-bottom: 10px
+    color: #000
+    height: 45px
+    border-radius: 20px
+    overflow: hidden
+    font-size: 14px
+    border: 1px solid transparent
+    transition: all ease .5s
+    &:hover
+      border: 1px solid #dedede
+      transform: translateX(5px)
+    .dpl
+      display: flex
+      align-items: center
+    .item-product-price
+      margin-right: 15px
+    .item-thumbnail
+      width: 45px
+      height: 45px
+      margin-right: 10px
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+    span
+      max-width: 350px
+  //Tiêu đề
+  .preview-title
+    padding-bottom: 10px
+  //Nhóm tên chuyên mục
+  .preview-category
+  label
+    span
+      cursor: pointer
+      padding: 4px 10px
+      border: 1px solid #ececec
+      border-radius: 30px
+      font-size: 12px
+    input[type="radio"]
+      display: none
+      &:checked + span
+        background-color: #282828
+        color: #fff
+  //Nhóm sản phẩm
+  .preview-products
+    margin-top: 10px
+.perspective-s
+  perspective: 1px
+  transform-origin: 0px 0px 0px
+  transform: rotateX(0deg) !important
+  transition: all ease 1s !important
+/*End*/
+.flex
+  display: flex
+  &.alignC
+    align-items: center
+  &.justBW
+    justify-content: space-between
+  &.directionC
+    flex-direction: column
+.breabcrumb-gr
+  display: flex
+  align-items: center
+  font-size: 14px
+  color: #350000
+  padding: 13px 4px 10px
+  a
+    color: #350000
+  li
+    &:after
+      content: "/"
+      color: #350000
+      display: inline-block
+      padding-left: 10px
+      padding-right: 10px
+    &:after:last-child
+      content: ''
+      display: none
+/*Css loader*/
+.loader
+  border-radius: 50%
+  width: 2.5em
+  height: 2.5em
+  -webkit-animation-fill-mode: both
+  animation-fill-mode: both
+  -webkit-animation: load7 1.8s infinite ease-in-out
+  animation: load7 1.8s infinite ease-in-out
+
+  &:before, &:after
+    border-radius: 50%
+    width: 2.5em
+    height: 2.5em
+    -webkit-animation-fill-mode: both
+    animation-fill-mode: both
+    -webkit-animation: load7 1.8s infinite ease-in-out
+    animation: load7 1.8s infinite ease-in-out
+
+  color: #000
+  font-size: 10px
+  margin: 80px auto
+  position: relative
+  text-indent: -9999em
+  -webkit-transform: translateZ(0)
+  -ms-transform: translateZ(0)
+  transform: translateZ(0)
+  -webkit-animation-delay: -0.16s
+  animation-delay: -0.16s
+
+  &:before, &:after
+    content: ''
+    position: absolute
+    top: 0
+
+  &:before
+    left: -3.5em
+    -webkit-animation-delay: -0.32s
+    animation-delay: -0.32s
+
+  &:after
+    left: 3.5em
+.response
+  margin: 0
+  .col
+    padding: 0 7px
+@-webkit-keyframes load7
+  0%,
+  80%,
+  100%
+    box-shadow: 0 2.5em 0 -1.3em
+
+  40%
+    box-shadow: 0 2.5em 0 0
+
+@keyframes load7
+  0%,
+  80%,
+  100%
+    box-shadow: 0 2.5em 0 -1.3em
+
+  40%
+    box-shadow: 0 2.5em 0 0
