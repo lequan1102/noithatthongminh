@@ -13,6 +13,10 @@
                         <div class="col-12 filter-cate">
                             <span class="filter-name">Chuyên mục</span>
                             <div>
+                                <label for="f-00">
+                                    <input type="radio" name="cate" value="" id="f-00">
+                                    <p>Tất cả</p>
+                                </label>
                                 @foreach($filter_cate as $item)
                                     <label for="f{{ $item->id }}" <?php
                                         $valueCategoryProduct = '';
@@ -57,17 +61,26 @@
                 </form>
             </div>
             <div class="col col-md-9 col-12" id="filter_product">
-                <div class="row">
-                    <div class="col col-sm-6 col-12">
-                        <div class="filter-product--sort">
-                            <span>Sắp xếp: </span>
-                            <select name="sort" onchange="filter.submit()">
-                                <option value="name">mới nhất</option>
-                                <option value="name">cũ nhất</option>
-                                <option value="name">giá giảm dần</option>
-                                <option value="name">giá tăng dần</option>
-                            </select>
-                        </div>
+                <div class="row filter-product--sort">
+                    <div class="col col-md-6 col-12 total-product">
+                        <ul class="product-selection">
+                            <li id="product-selection--gird" class="selected">
+                                <a href="#" title="Lưới"></a>
+                            </li>
+                            <li id="product-selection--list">
+                                <a href="#" title="Danh sách"></a>
+                            </li>
+                            <p>Có {{$cate->count()}} sản phẩm</p>
+                        </ul>
+                    </div>
+                    <div class="col col-md-6 col-12 sort-select">
+                        <span>Sắp xếp theo: </span>
+                        <select name="sort" onchange="filter.submit()">
+                            <option value="name">mới nhất</option>
+                            <option value="name">cũ nhất</option>
+                            <option value="name">giá giảm dần</option>
+                            <option value="name">giá tăng dần</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row">
@@ -113,7 +126,7 @@
         </div>
     </div>
 
-  {{ $cate->links('vendor.pagination.default') }}
+  {{-- {{ $cate->links('vendor.pagination.default') }} --}}
 @endsection
 @section('footer')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>

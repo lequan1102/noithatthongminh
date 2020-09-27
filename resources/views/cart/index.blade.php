@@ -2,6 +2,26 @@
 
 @section('head')
     <link rel="stylesheet" href="{{ asset('public/templates/libs/select2/select2.min.css') }}">
+    <style>
+        @media screen and (max-width: 540px) {
+            a#up{
+                display: none;
+            }
+            footer, .policies, .total {
+                display: none;
+            }
+            
+            [mobie] {
+                display: none
+            }
+            [cart] {
+                display: block
+            }
+            .cart {
+                margin-top: 73px;
+            }
+        }
+    </style>
 @endsection
 @section('layout')
     <div class="container cart mt40 mb40">
@@ -31,10 +51,10 @@
                                     <td><a href="{{ route('article.product',['slug'=>$item->associatedModel->slug,'id'=>$item->id]) }}">{{ $item->name }}</a></td>
                                     <td>
                                     @if($item->associatedModel->discount_price == null)
-                                    <span class="cart-price" style="color: #e7654b;font-weight: 500;">{{ $item->price }} <sup>₫</sup></span><br>
+                                        <span class="cart-price" style="color: #e7654b;font-weight: 500;">{{ $item->associatedModel->price }} <sup>₫</sup></span><br>
                                         @else
-                                        <span class="cart-price" style="color: #e7654b;font-weight: 500;">{{ $item->associatedModel->discount_price }}</span><span style="color: #e7654b"><sup>₫</sup></span><br>
-                                        <span style="text-decoration: line-through;color: #adadad;font-size: 15px;">{{ $item->associatedModel->price }}</span><span  style="color: #adadad"><sup>₫</sup></span>
+                                            <span class="cart-price" style="color: #e7654b;font-weight: 500;">{{ $item->associatedModel->discount_price }}</span><span style="color: #e7654b"><sup>₫</sup></span><br>
+                                            <span style="text-decoration: line-through;color: #adadad;font-size: 15px;">{{ $item->associatedModel->price }}</span><span  style="color: #adadad"><sup>₫</sup></span>
                                     @endif
                                     </td>
                                     <td>
@@ -55,7 +75,7 @@
                 <div class="col-12" cartMB id="cart-mobie">
                     @foreach($cart as $item)
                         <div class="cart-mobie-item">
-                            <a href="{{ route('remove.cart', ['id' => $item->associatedModel->id]) }}" onclick="remove_cart()" class="button-remove-cart" title="Xóa sản phẩm khỏi giỏ hàng"><i class="far fa-times-circle"></i></a>
+                            <a href="{{ route('remove.cart', ['id' => $item->associatedModel->id]) }}" onclick="remove_cart()" class="button-remove-cart" title="Xóa sản phẩm khỏi giỏ hàng"><svg viewBox="0 0 448 512"><path fill="currentColor" d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"></path></svg></a>
                             <div class="flex">
                                 <div class="box-image">
                                     <div class="thumbnail">
@@ -65,11 +85,11 @@
                                 <div class="box-info">
                                     <a href="{{ route('article.product',['slug'=>$item->associatedModel->slug,'id'=>$item->id]) }}">{{ $item->name }}</a>
                                     @if($item->associatedModel->discount_price == null)
-                                        <span class="cart-price-mb" style="color: #e7654b;font-weight: 500;">{{ $item->price }} <sup>₫</sup></span><br>
+                                        <span class="cart-price-mb" style="color: #e7654b;font-weight: 500;">{{ $item->associatedModel->price }}</span><sup style="color: #e7654b">₫</sup><br>
                                         @else
                                             <span class="cart-price-mb" style="color: #e7654b;font-weight: 500;">{{ $item->associatedModel->discount_price }}</span><span style="color: #e7654b"><sup>₫</sup></span>
                                     @endif
-                                        <div class="quantity" data-productId="{{$item->associatedModel->id}}">
+                                        <div class="quantity-mb" data-productId="{{$item->associatedModel->id}}">
                                             <input class="cart-quantity-input-mb" name="quantity" value="{{ $item->quantity }}" maxlength="2" max="100" size="1"  data-productid="{{ $item->associatedModel->id }}" id="number{{ $item->associatedModel->id }}">
                                         </div>
                                     </div>
@@ -196,6 +216,20 @@
                 </div>
             @endif
         </div>
+    </div>
+    <!--Cart Order Mobie-->
+    <div id="cart-rev-mb">
+        <div class="cart-rev-mb-flex">
+            <ul class="cart-rev-mb-quantity">
+                <li>Tổng số lượng: </li>
+                <li id="js-cart_total_quantity">{{ Cart::getTotalQuantity() }}</li>
+            </ul>
+            <ul>
+                <li>Tổng đơn hàng: </li>
+                <li><div id="js-cart_total_price"><?php echo number_format(Cart::getTotal(), 0, ',', '.') ?></div><sup>₫</sup></li>
+            </ul>
+        </div>
+        <button>Tiếp tục</button>
     </div>
 @endsection
 

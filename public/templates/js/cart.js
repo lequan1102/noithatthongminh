@@ -14,33 +14,28 @@ $.ajaxSetup({
  ******************************
  * button id="js_addCart" data-product-id=""
  ******************************/
-
-var exists_button_add_cart = document.getElementById("js_addCart")
-if(exists_button_add_cart != null){
-  exists_button_add_cart.addEventListener("click", function(e){
-    let button = e.target
-    let quantity = 1
-    let exists_quantity = document.getElementById("number")
-    let find_number_total_cart = document.getElementById('js_total_cart')
-    if(exists_quantity != null){
-      quantity = exists_quantity.value
-    }
-    $.ajax({
-        type: "post",
-        url: url+"latumi/"+"cart/addcart",
-        data: {
-            product_id: button.getAttribute('data-product-id'),
-            quantity: quantity
-        },
-        success: function (response) {
-            swal("Tuyệt vời!", response.status, "success");
-            find_number_total_cart.innerHTML = response.total_cart
-            setTimeout(function(){
-                document.querySelector('.swal-overlay--show-modal').classList.remove('swal-overlay--show-modal');
-            }, 2000);
-        }
-    });
-  })
+function add_cart(even){
+  let quantity = 1
+  let exists_quantity = document.getElementById("number")
+  let find_number_total_cart = document.getElementById('js_total_cart')
+  if(exists_quantity != null){
+    quantity = exists_quantity.value
+  }
+  $.ajax({
+      type: "post",
+      url: url+"latumi/"+"cart/addcart",
+      data: {
+          product_id: even.getAttribute('data-product-id'),
+          quantity: quantity
+      },
+      success: function (response) {
+          swal("Tuyệt vời!", response.status, "success");
+          find_number_total_cart.innerHTML = response.total_cart
+          setTimeout(function(){
+              document.querySelector('.swal-overlay--show-modal').classList.remove('swal-overlay--show-modal');
+          }, 2000);
+      }
+  });
 }
 /******************************
  ******FAVORITE PRODUCT********
@@ -220,9 +215,8 @@ function updateCartTotalMB() {
       // var cartPriceItemMB = cartRow.getElementsByClassName('cart-price-item-mb')[0]
       var quantityElementMB = cartRow.getElementsByClassName('cart-quantity-input-mb')[0]
 
-      var price = priceElementMB.innerText.replace(' đ', '')
-      var replaceAllPrice = price.replaceAll('.','')
-
+      var replaceAllPrice = priceElementMB.innerText.replaceAll('.','')
+      console.log(replaceAllPrice)
       var quantity = quantityElementMB.value
       totalMB = totalMB + (replaceAllPrice * quantity)
       quantityN = parseFloat(quantityN + Number(quantity))
@@ -231,8 +225,8 @@ function updateCartTotalMB() {
       // cartPriceItemMB.innerText = new Intl.NumberFormat('vi').format(cartPriceItemFormatMB)
   }
   totalMB = Math.round(totalMB)
-  document.getElementsByClassName('cart-total-price')[0].innerText = new Intl.NumberFormat('vi').format(totalMB)
-  document.getElementsByClassName('cart-total-quantity')[0].innerText = quantityN
+  document.getElementById('js-cart_total_price').innerText = new Intl.NumberFormat('vi').format(totalMB)
+  document.getElementById('js-cart_total_quantity').innerText = quantityN
 }
 
 //UPDATE Quantity Cart handmade PC
@@ -275,9 +269,8 @@ function ajaxUpdateItemCart(productId,quantity){
 //Xóa sản phẩm khỏi giỏ hàng
 function remove_cart(){
   var check = confirm("Bạn có muốn xóa sản phẩm này khỏi giỏ hàng của bạn?");
-  if (check == true) {}
-  else {
-      return false;
+  if (check != true) {
+    return false;
   }
 }
 /**************************************

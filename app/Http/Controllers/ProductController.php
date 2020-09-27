@@ -102,31 +102,39 @@ class ProductController extends Controller
                                          ->limit(10)->get();
         return view('article.product', $data);
     }
-    //Filter Product
+    /******************************
+     ******FILTER PRODUCT*******
+    ******************************/
     public function filter_product(Request $request){
         if($request->method('get')){
             $category = $this->categories->orderBy('order','ASC')->get();
             $product = Products::query();
-            if ($request->has('cate'))
+            if ($request->has('cate') && $request->cate != null)
             {
                 $product->where('category_id', $request->cate);
             }
-            if($request->has('min_price') && $request->has('max_price')){
-                $product->where('price','>=',$request->min_price);
-                $product->where('price','<=',$request->max_price);
-            }
-            // if($request->has('sort')){
-            //     if($request->sort == 'name'){
-                    
-            //     } elseif ($request->sort == 'priceASC') {
-                    
-            //     } elseif ($request->sort == 'priceDESC') {
-                    
-            //     }
+            if($request->has('price') && $request->price != null){
+                $explode_price = explode('-',$request->price);
+
+                $min_price = number_format($explode_price[0], 0, '.','.');
+                $max_price = number_format($explode_price[1], 0, '.','.');
                 
-            //     $product->orderBy($request->sort,'');
-            // }
-            $products = $product->orderBy('id', 'DESC')->paginate(3)->appends(array(
+                $price_str_replace = str_replace('.','',$product->pluck('price'));
+                
+                $product->whereBetween('price',[$min_price,$max_price]);
+            }
+            if($request->has('sort')){
+                if($request->sort == 'name'){
+                    
+                } elseif ($request->sort == 'priceASC') {
+                    
+                } elseif ($request->sort == 'priceDESC') {
+                    
+                }
+                
+                $product->orderBy($request->sort,'');
+            }
+            $products = $product->orderBy('id', 'DESC')->paginate(12)->appends(array(
                 'cate'  => $request->cate,
                 'price' => $request->price
             )); 

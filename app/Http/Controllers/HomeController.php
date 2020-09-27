@@ -16,14 +16,15 @@ class HomeController extends Controller
     //TRANG CHỦ
     public function index()
     {
-        $data['banner']          = Banner::orderBy('order', 'DESC')->limit(4)->get();
+        $data['banner']           = Banner::orderBy('order', 'DESC')->limit(4)->get();
 
-        $data['products']        = Products::orderBy('order')->limit(10)->get();
-        $data['products_future'] = Products::orderBy('order')->where('featured', '1')->limit(10)->get();
+        $data['products']         = Products::orderBy('order')->limit(10)->get();
+        $data['products_future']  = Products::orderBy('order')->where('featured', '1')->limit(12)->get();
+        $data['products_selling'] = Products::orderBy('order')->where('selling','<>', 0)->limit(12)->get();
 
-        $data['news']            = Posts::orderBy('order','DESC')->limit(7)->get();
+        $data['news']             = Posts::orderBy('order','DESC')->limit(7)->get();
 
-        $data['talkaboutus']     = Talkaboutus::orderBy('order','DESC')->limit(7)->get();
+        $data['talkaboutus']      = Talkaboutus::orderBy('order','DESC')->limit(7)->get();
 
         return view('home', $data);
     }

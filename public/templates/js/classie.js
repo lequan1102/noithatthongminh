@@ -167,7 +167,7 @@ window.addEventListener('scroll',function(){
   });
   $('.slick-category-products').slick({
     arrows: true,
-    infinite: false,
+    infinite: true,
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 1,
@@ -175,7 +175,10 @@ window.addEventListener('scroll',function(){
       {
         breakpoint: 540,
         settings: {
-          slidesToShow: 3
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          centerMode: true,
+          focusOnSelect: true,
         }
       },
     ]

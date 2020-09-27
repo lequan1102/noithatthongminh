@@ -13,11 +13,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="col col-md-3 col-12 sidebar">
+            <div class="col col-md-4 col-12 sidebar">
                 <h2>Mạng xã hội</h2>
                 <h2>Liên hệ</h2>
             </div>
-            <div class="col col-md-9 col-12">
+            <div class="col col-md-8 col-12">
                 @if(isset($cate))
                     @foreach($cate as $index => $item)
                         <a href="{{ route('article.news',['slug'=>$item->slug,'id'=>$item->id]) }}" class="article mirror" title="{{ $item->title }}">
@@ -30,9 +30,8 @@
                             </div>
                             <div class="des">
                                 <span>{{ $item->title }}</span>
-                                <div class="auth">Viết bởi <b>Thiết bị thông minh</b>, ngày {{ $item->created_at }}</div>
+                                <div class="auth">Viết bởi <b>Thiết bị thông minh</b>, {{ \Carbon\Carbon::createFromTimeStamp(strtotime($item->created_at))->diffForHumans() }}</div>
                                 <p>{{ $item->excerpt }}</p>
-                                <button>Xem thêm</button>
                             </div>
                         </a>
                     @endforeach
