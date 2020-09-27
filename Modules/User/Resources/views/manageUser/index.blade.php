@@ -11,7 +11,7 @@
                     <div class="dashbroad-profile">
                         <div class="dashboard-mod-title">
                             <h4>Thông tin tài khoản</h4>
-                            <a href="#">Chỉnh sửa</a>
+                            <a href="{{route('profile.edit.user',['id'=> Auth::guard('customer')->user()->id])}}">Chỉnh sửa</a>
                         </div>
                         <span>Trẻ Con</span><br>
                         <span>htmattroi@gmail.com</span>
@@ -36,7 +36,7 @@
                                 <span>{{ $customerLocation->location }}</span>
                                 <br>
                                 <span>{{ $customerLocation->wards }} - {{ $customerLocation->district }} - {{ $customerLocation->province }}</span>
-                                
+                                 
                                 <span> - (SĐT) {{ $customerLocation->number_phone }}</span>
                         @endif
                         

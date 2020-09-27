@@ -13,11 +13,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="col col-md-4 col-12 sidebar">
+            <div class="col col-md-3 col-12 sidebar">
                 <h2>Mạng xã hội</h2>
                 <h2>Liên hệ</h2>
             </div>
-            <div class="col col-md-8 col-12">
+            <div class="col col-md-9 col-12">
                 @if(isset($cate))
                     @foreach($cate as $index => $item)
                         <a href="{{ route('article.news',['slug'=>$item->slug,'id'=>$item->id]) }}" class="article mirror" title="{{ $item->title }}">

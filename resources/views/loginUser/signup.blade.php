@@ -1,12 +1,58 @@
-@extends('loginUser.layouts')
-
-@section('title')
-Đăng ký thành viên
-@endsection
+@extends('layouts.master')
+@section('title')Đăng ký thành viên @endsection
 
 @section('layout')
+<!-- Sign In -->
+<section id="login-user" class="container sign-in mt40 mb40">
+    <form method="POST" action="{{ route('login.signup.submit') }}">
+        @csrf
+        <h2 class="text-center">Đăng ký tài khoản</h2>
+        <label for="name">
+            <input type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Họ và tên" required>
+            @error('name')
+                <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
+        </label>
+        <label for="email">
+            <input type="email" name="email" id="email" value="{{ old('email') }}" placeholder="Địa chỉ email của bạn" required>
+            @error('email')
+                <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
+        </label>
+        <label for="phone">
+            <input type="text" name="phone" id="phone" value="{{ old('phone') }}" placeholder="Số điện thoại của bạn" required>
+            @error('phone')
+                <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
+        </label>
+        <label for="password">
+            <input type="text" name="password" id="password" value="{{ old('password') }}" placeholder="Mật khẩu" required>
+            @error('password')
+                <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
+        </label>
+        <label for="re-pass">
+            <input type="text" name="password_confirmation" id="re-pass" value="{{ old('password_confirmation') }}" placeholder="Nhập lại mật khẩu" required>
+            @error('password')
+                <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
+        </label>
+        <div class="form-group">
+            <input type="checkbox" name="agreeterm" id="agreeterm" class="agreeterm"  style="transform: translateY(2px)">
+            <label for="agreeterm" class="label-agree-term">
+                <span><span></span></span>Tôi đồng ý tất cả các tuyên bố trong<a href="#" style="margin-left: 5px" class="term-service">Điều khoản dịch vụ</a>
+            </label>
+            @error('agreeterm')
+                <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
+        </div>
+        <button type="submit">Đăng ký ngay</button>
+        <a href="{{ route('login') }}" class="signup-image-link" style="font-size: 15px;color: #e7654b;margin-top: 10px;display: block;">Tôi đã là thành viên</a>
+    </form>
+    
+</section>
     <!-- Form đăng ký -->
-    <section class="signup">
+    {{-- <section class="signup">
         <div class="container">
             <div class="signup-content">
                 <div class="signup-form">
@@ -80,7 +126,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection
 
 

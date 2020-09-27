@@ -200,7 +200,7 @@
       display: none; }
 
   .response {
-    margin: 0px; }
+    margin: 0px !important; }
     .response .col {
       padding: 0 7px; }
       .response .col .item {

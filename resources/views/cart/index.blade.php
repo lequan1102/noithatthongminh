@@ -45,7 +45,7 @@
                                     <td class="pr flex alignC">
                                         <div class="thumbnail">
                                             <img src="{{ asset('storage/app/public') }}/{{ $item->associatedModel->image }}">
-                                            <a href="{{ route('remove.cart', ['id' => $item->associatedModel->id]) }}" onclick="remove_cart()" class="bg" title="Xóa sản phẩm khỏi giỏ hàng"><i class="far fa-times-circle"></i></a>
+                                            <a href="{{ route('remove.cart', ['id' => $item->associatedModel->id]) }}" class="bg confirmation" title="Xóa sản phẩm khỏi giỏ hàng"><i class="far fa-times-circle"></i></a>
                                         </div>
                                     </td>
                                     <td><a href="{{ route('article.product',['slug'=>$item->associatedModel->slug,'id'=>$item->id]) }}">{{ $item->name }}</a></td>
@@ -100,7 +100,6 @@
                 <div class="col col-md-4 col-12">
                     <div class="purchase_information">
                         <h3 class="mt20">Thông tin mua hàng</h3>
-                        <div id="status_message" style="font-size: 13px;color: red"></div>
                         <!--Nếu tồn tại địa chỉ và đã đăng nhập-->
                         @if(isset($customerLocation))
                             <form>
@@ -202,7 +201,7 @@
                             </p>
                         </div>
                         <div class="flex alignC justBW">
-                            <button class="cart_order mb20" id="js_cart_order">Đặt hàng</button>
+                            <button class="cart_order mb20" id="js_cart_order"><svg viewBox="0 0 512 512"><path fill="currentColor" d="M466.5 83.7l-192-80a48.15 48.15 0 0 0-36.9 0l-192 80C27.7 91.1 16 108.6 16 128c0 198.5 114.5 335.7 221.5 380.3 11.8 4.9 25.1 4.9 36.9 0C360.1 472.6 496 349.3 496 128c0-19.4-11.7-36.9-29.5-44.3zM262.2 478.8c-4 1.6-8.4 1.6-12.3 0C152 440 48 304 48 128c0-6.5 3.9-12.3 9.8-14.8l192-80c3.9-1.6 8.4-1.6 12.3 0l192 80c6 2.5 9.9 8.3 9.8 14.8.1 176-103.9 312-201.7 350.8zm136.2-325c-4.7-4.7-12.3-4.7-17-.1L218 315.8l-69-69.5c-4.7-4.7-12.3-4.7-17-.1l-8.5 8.5c-4.7 4.7-4.7 12.3-.1 17l85.9 86.6c4.7 4.7 12.3 4.7 17 .1l180.5-179c4.7-4.7 4.7-12.3.1-17z"></path></svg>Đặt hàng ngay</button>
                         </div>
                     </div>
                 </div>

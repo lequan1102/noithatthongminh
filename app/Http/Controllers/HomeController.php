@@ -22,7 +22,7 @@ class HomeController extends Controller
         $data['products_future']  = Products::orderBy('order')->where('featured', '1')->limit(12)->get();
         $data['products_selling'] = Products::orderBy('order')->where('selling','<>', 0)->limit(12)->get();
 
-        $data['news']             = Posts::orderBy('order','DESC')->limit(7)->get();
+        $data['news']             = Posts::orderBy('updated_at','ASC')->limit(7)->get();
 
         $data['talkaboutus']      = Talkaboutus::orderBy('order','DESC')->limit(7)->get();
 

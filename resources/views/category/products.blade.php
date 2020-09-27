@@ -10,52 +10,62 @@
                 <form id="filter" action="{{ route('filter.product') }}" method="GET">
                     @csrf
                     <div class="row">
-                        <div class="col-12 filter-cate">
-                            <span class="filter-name">Chuyên mục</span>
-                            <div>
-                                <label for="f-00">
-                                    <input type="radio" name="cate" value="" id="f-00">
-                                    <p>Tất cả</p>
-                                </label>
-                                @foreach($filter_cate as $item)
-                                    <label for="f{{ $item->id }}" <?php
-                                        $valueCategoryProduct = '';
-                                        if(isset($_GET['cate']) && $_GET['cate'] != ''){
-                                            if($_GET['cate'] == $item->id){
-                                                $valueCategoryProduct = $item->id;
-                                                echo 'class="active"';
-                                            }
-                                        } ?>>
-                                        <input type="radio" name="cate" value="{{ $item->id }}" id="f{{ $item->id }}">
-                                        <p>{{ $item->name }}</p>
+                        <div class="col-12">
+                            <div class="f_ filter-cate">
+                                <span class="filter-name">Chuyên mục</span>
+                                <div>
+                                    <label for="f-00">
+                                        <input type="radio" name="cate" value="" id="f-00">
+                                        <p>Tất cả</p>
                                     </label>
-                                @endforeach
+                                    @foreach($filter_cate as $item)
+                                        <label for="f{{ $item->id }}" <?php
+                                            $valueCategoryProduct = '';
+                                            if(isset($_GET['cate']) && $_GET['cate'] != ''){
+                                                if($_GET['cate'] == $item->id){
+                                                    $valueCategoryProduct = $item->id;
+                                                    echo 'class="active"';
+                                                }
+                                            } ?>>
+                                            <input type="radio" name="cate" value="{{ $item->id }}" id="f{{ $item->id }}">
+                                            <p>{{ $item->name }}</p>
+                                        </label>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 filter-price">
-                            <span class="filter-name">Giá</span>
-                            <label for="price-1">
-                                <input type="radio" name="price" id="price-1" value="0-1000000">
-                                <span>0 - 1.000.000 <sup>₫</sup></span>
-                            </label>
-                            <label for="price-2">
-                                <input type="radio" name="price" id="price-2" value="1000000-3000000">
-                                <span>1.000.000<sup>₫</sup> - 3.000.000<sup>₫</sup></span>
-                            </label>
-                            <label for="price-3">
-                                <input type="radio" name="price" id="price-3" value="3000000-5000000">
-                                <span>3.000.000<sup>₫</sup> - 5.000.000<sup>₫</sup></span>
-                            </label>
-                            <label for="price-4">
-                                <input type="radio" name="price" id="price-4" value="5000000-10000000">
-                                <span>5.000.000<sup>₫</sup> - 10.000.000<sup>₫</sup></span>
-                            </label>
-                            <label for="price-5">
-                                <input type="radio" name="price" id="price-5" value="10000000-15000000">
-                                <span>10.000.000<sup>₫</sup> - 15.000.000<sup>₫</sup></span>
-                            </label>
+                        <div class="col-12">
+                            <div class="filter-price f_">
+                                <span class="filter-name">Giá</span>
+                                <div>
+                                    <label for="price-0">
+                                        <input type="radio" name="price" id="price-0" value="">
+                                        <span>Tất cả</span>
+                                    </label>
+                                    <label for="price-1">
+                                        <input type="radio" name="price" id="price-1" value="0-1000000">
+                                        <span>0 - 1.000.000 <sup>₫</sup></span>
+                                    </label>
+                                    <label for="price-2">
+                                        <input type="radio" name="price" id="price-2" value="1000000-3000000">
+                                        <span>1.000.000<sup>₫</sup> - 3.000.000<sup>₫</sup></span>
+                                    </label>
+                                    <label for="price-3">
+                                        <input type="radio" name="price" id="price-3" value="3000000-5000000">
+                                        <span>3.000.000<sup>₫</sup> - 5.000.000<sup>₫</sup></span>
+                                    </label>
+                                    <label for="price-4">
+                                        <input type="radio" name="price" id="price-4" value="5000000-10000000">
+                                        <span>5.000.000<sup>₫</sup> - 10.000.000<sup>₫</sup></span>
+                                    </label>
+                                    <label for="price-5">
+                                        <input type="radio" name="price" id="price-5" value="10000000-15000000">
+                                        <span>10.000.000<sup>₫</sup> - 15.000.000<sup>₫</sup></span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -83,7 +93,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row response" style="margin: -12px">
                     @if (isset($cate) && count($cate) > 0)
                         @foreach ($cate as $index => $item)
                             <div class="col col-md-4 col-6">
@@ -92,8 +102,13 @@
                                         <div class="thumbnail-lazy loaded">
                                             <img src="{{ Voyager::image($item->image) }}" alt="{{ $item->title }}">
                                         </div>
-                                        <div class="box-content">
-                                            <button class="quickview" id="js_quickview" data-product-id="{{ $item->id }}">Xem nhanh</button>
+                                        <div class="item-inner">
+                                            <div class="inner inner-cart" onclick="add_cart(this)" data-product-id="{{$item->id}}">
+                                                <svg viewBox="0 0 576 512"><path fill="currentColor" d="M551.991 64H129.28l-8.329-44.423C118.822 8.226 108.911 0 97.362 0H12C5.373 0 0 5.373 0 12v8c0 6.627 5.373 12 12 12h78.72l69.927 372.946C150.305 416.314 144 431.42 144 448c0 35.346 28.654 64 64 64s64-28.654 64-64a63.681 63.681 0 0 0-8.583-32h145.167a63.681 63.681 0 0 0-8.583 32c0 35.346 28.654 64 64 64 35.346 0 64-28.654 64-64 0-17.993-7.435-34.24-19.388-45.868C506.022 391.891 496.76 384 485.328 384H189.28l-12-64h331.381c11.368 0 21.177-7.976 23.496-19.105l43.331-208C578.592 77.991 567.215 64 551.991 64zM464 416c17.645 0 32 14.355 32 32s-14.355 32-32 32-32-14.355-32-32 14.355-32 32-32zm-256 0c17.645 0 32 14.355 32 32s-14.355 32-32 32-32-14.355-32-32 14.355-32 32-32zm294.156-128H171.28l-36-192h406.876l-40 192zM272 196v-8c0-6.627 5.373-12 12-12h36v-36c0-6.627 5.373-12 12-12h8c6.627 0 12 5.373 12 12v36h36c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12h-36v36c0 6.627-5.373 12-12 12h-8c-6.627 0-12-5.373-12-12v-36h-36c-6.627 0-12-5.373-12-12z"></path></svg>
+                                            </div>
+                                            <div class="inner inner-favorite" onclick="add_favorite(this)" data-product-id="{{$item->id}}">
+                                                <svg viewBox="0 0 512 512"><path fill="currentColor" d="M462.3 62.7c-54.5-46.4-136-38.7-186.6 13.5L256 96.6l-19.7-20.3C195.5 34.1 113.2 8.7 49.7 62.7c-62.8 53.6-66.1 149.8-9.9 207.8l193.5 199.8c6.2 6.4 14.4 9.7 22.6 9.7 8.2 0 16.4-3.2 22.6-9.7L472 270.5c56.4-58 53.1-154.2-9.7-207.8zm-13.1 185.6L256.4 448.1 62.8 248.3c-38.4-39.6-46.4-115.1 7.7-161.2 54.8-46.8 119.2-12.9 142.8 11.5l42.7 44.1 42.7-44.1c23.2-24 88.2-58 142.8-11.5 54 46 46.1 121.5 7.7 161.2z"></path></svg>
+                                            </div>
                                         </div>
                                     </div>
                                     <a href="{{ route('article.product',['slug' => $item->slug, 'id' => $item->id]) }}">{{ $item->title }}</a>
@@ -119,68 +134,19 @@
                             </div>
                         @endforeach
                         @else
-                        Khoong tim thay san pham phu hop
+                        <div class="col-12">
+                            <div id="notfound" class="text-center">
+                                <img src="{{asset('public/templates/img/notfound.png')}}" alt="notfound products">
+                                <div>Không tìm thấy sản phẩm phù hợp nào dành cho bạn!</div>
+                            </div>
+                        </div>
                     @endif
                 </div>
             </div>
         </div>
     </div>
 
-  {{-- {{ $cate->links('vendor.pagination.default') }} --}}
+  {{ $cate->links('vendor.pagination.default') }}
 @endsection
 @section('footer')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
-    <script>
-        $(".js-range-slider").ionRangeSlider({
-            onStart: function (data) {
-                // Called right after range slider instance initialised
-        
-                // console.log(data.input);        // jQuery-link to input
-                // console.log(data.slider);       // jQuery-link to range sliders container
-                // console.log(data.min);          // MIN value
-                // console.log(data.max);          // MAX values
-                // console.log(data.from);         // FROM value
-                // console.log(data.from_percent); // FROM value in percent
-                // console.log(data.from_value);   // FROM index in values array (if used)
-                // console.log(data.to);           // TO value
-                // console.log(data.to_percent);   // TO value in percent
-                // console.log(data.to_value);     // TO index in values array (if used)
-                // console.log(data.min_pretty);   // MIN prettified (if used)
-                // console.log(data.max_pretty);   // MAX prettified (if used)
-                // console.log(data.from_pretty);  // FROM prettified (if used)
-                // console.log(data.to_pretty);    // TO prettified (if used)
-            },
-        
-            onChange: function (data) {
-
-            },
-        
-            onFinish: function (data) {
-                // $(this).closest('form').submit();
-                console.log(data.to);
-                console.log(data.from);
-                $.ajax({
-                    type: "get",
-                    url: "{{ route('filter.product') }}",
-                    data: {
-                        'id': $(this).data('productid'),
-                        '_token': '{{ csrf_token() }}',
-                        'min_price': data.from,
-                        'max_price' : data.to
-                    },
-                    success: function (response) {
-                        $("#filter_product").html(response);
-                        console.log(response.min_price);
-                        console.log(response.max_price);
-                    }
-                });
-            },
-        
-            onUpdate: function (data) {
-                // Called then slider is changed using Update public method
-        
-                console.log(data.from_percent);
-            }
-        });
-    </script>
 @endsection

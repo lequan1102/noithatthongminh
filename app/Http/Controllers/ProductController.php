@@ -121,7 +121,9 @@ class ProductController extends Controller
                 
                 $price_str_replace = str_replace('.','',$product->pluck('price'));
                 
-                $product->whereBetween('price',[$min_price,$max_price]);
+                // $product->whereBetween('price',[$min_price,$max_price]);
+                $product->where('price','>=',$min_price);
+                $product->where('price','<=',$max_price);
             }
             if($request->has('sort')){
                 if($request->sort == 'name'){

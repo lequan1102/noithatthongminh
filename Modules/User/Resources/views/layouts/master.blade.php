@@ -78,7 +78,7 @@
                         <a href="{{ route('cart') }}">
                             <div class="w-img">
                                 <img src="{{ asset('public/templates/img/icons/bag.svg') }}">
-                                <div class="quantity" id="js_total_cart">{{ Cart::getContent()->count() }}</div>
+                                <div id="js_total_cart">{{ Cart::getContent()->count() }}</div>
                             </div>
                             <span>Giỏ hàng</span>
                         </a>
